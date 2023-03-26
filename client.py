@@ -4,7 +4,7 @@ import threading
 
 class OpenClient(Client):
     """打开客户端"""
-    
+
     def _handle(self)->None:
         """处理数据"""
         while True:

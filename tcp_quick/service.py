@@ -40,7 +40,7 @@ class Service(ABC):
             t=threading.Thread(target=self._listen,args=(i,))
             t.start()
             self._clients.append(t)
-    
+
     def _listen(self,id:int)->None:
         """监听线程"""
         while True:
@@ -51,7 +51,7 @@ class Service(ABC):
                 self._handle(sock,addr[0],addr[1])
             except Exception as e:
                 print('[LISTEN] 监听线程'+str(id)+'异常: '+str(e))
-    
+
     def close(self)->None:
         """关闭socket"""
         self._sock.close()
