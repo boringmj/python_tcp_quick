@@ -38,7 +38,7 @@ class Service(ABC):
         self._clients=[]
         self._is_start=True
         for i in range(self._backlog):
-            t=threading.Thread(target=self._listen,args=(i,))
+            t=threading.Thread(target=self._listen,args=(i,),daemon=True)
             t.start()
             self._clients.append(t)
 
