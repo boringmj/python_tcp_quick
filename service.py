@@ -16,7 +16,7 @@ class OpenService(Service):
         # 关闭链接
         sock.close()
 
-service=OpenService('0.0.0.0',9999,1).close()
+service=OpenService('0.0.0.0',9999,1)
 
 def end_service():
     """结束服务端"""
