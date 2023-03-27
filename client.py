@@ -1,8 +1,6 @@
 import socket
 from tcp_quick.client import Client
 
-import threading
-
 class OpenClient(Client):
     """打开客户端"""
 
