@@ -4,7 +4,7 @@ from abc import ABC,abstractmethod
 class Client(ABC):
     """
     快速TCP客户端抽象类
-    请注意需要重写 `_handle(self)->None` 方法
+    请注意需要重写 `_handle(self,sock:socket.socket)->None` 方法
     
     @param ip: 客户端ip
     @param port: 客户端端口
@@ -29,7 +29,7 @@ class Client(ABC):
         """连接服务端"""
         self._sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self._sock.connect((self._ip,self._port))
-        self._handle()
+        self._handle(self._sock)
 
     def send(self,data:bytes)->None:
         """发送数据"""
@@ -45,6 +45,6 @@ class Client(ABC):
         del self
     
     @abstractmethod
-    def _handle(self)->None:
+    def _handle(self,sock:socket.socket)->None:
         """处理数据"""
         pass
