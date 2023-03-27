@@ -36,6 +36,7 @@ class Service(ABC):
         self._sock.listen(self._backlog)
         # 开启监听线程
         self._clients=[]
+        self._is_start=True
         for i in range(self._backlog):
             t=threading.Thread(target=self._listen,args=(i,))
             t.start()
@@ -43,7 +44,7 @@ class Service(ABC):
 
     def _listen(self,id:int)->None:
         """监听线程"""
-        while True:
+        while self._is_start:
             print('[LISTEN] 监听线程'+str(id)+'开始监听')
             try:
                 sock,addr=self._sock.accept()
@@ -54,9 +55,8 @@ class Service(ABC):
 
     def close(self)->None:
         """关闭socket"""
+        self._is_start=False
         self._sock.close()
-        for client in self._clients:
-            client.join()
         del self
 
     # 开启服务端
