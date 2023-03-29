@@ -5,7 +5,7 @@ from abc import ABC,abstractmethod
 class Service(ABC):
     """
     快速TCP服务端抽象类
-    请注意需要重写 `_handle(self,sock:socket.socket,ip:str,port:int)->None` 方法
+    请注意需要实现 `_handle(self,sock:socket.socket,ip:str,port:int)->None` 方法
 
     @param ip: 监听的ip
     @param port: 监听的端口

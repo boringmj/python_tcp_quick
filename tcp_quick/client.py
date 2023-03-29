@@ -4,16 +4,16 @@ from abc import ABC,abstractmethod
 class Client(ABC):
     """
     快速TCP客户端抽象类
-    请注意需要重写 `_handle(self,sock:socket.socket)->None` 方法
+    请注意需要实现 `_handle(self,sock:socket.socket)->None` 方法
     
-    @param ip: 客户端ip
-    @param port: 客户端端口
+    @param ip: 服务端ip
+    @param port: 服务端端口
     """
 
     def __init__(self,ip:str='127.0.0.1',port:int=10901)->None:
         """
-        @param ip: 客户端ip
-        @param port: 客户端端口
+        @param ip: 服务端ip
+        @param port: 服务端端口
         """
         # 严格校验ip地址,每位数字0-255
         if not re.match(r'^((25[0-5]|2[0-4]\d|[01]?\d\d?)\.){3}(25[0-5]|2[0-4]\d|[01]?\d\d?)$',ip):
