@@ -11,7 +11,8 @@ git clone https://github.com/boringmj/python_tcp_quick.git
 python_tcp_quick 项目目录
 │─ .gitignore gitignore文件, 可删除
 │─ client.py 客户端示例, 可删除
-│─ LICENSE 开源许可证,请 尽量 保留在项目目录中
+│─ LICENSE 开源许可证,请尽量保留在项目目录中
+│─ README.md 项目说明文件, 可删除
 │─ service.py 服务端示例, 可删除
 │
 └─tcp_quick tcp_quick的核心包
@@ -22,7 +23,7 @@ python_tcp_quick 项目目录
     [python中的“类”](https://blog.csdn.net/zhangke0426/article/details/122528384)\
     [谈谈Python的抽象类](https://blog.csdn.net/gongdiwudu/article/details/126575358)\
     如果您不太想了解, 那么您也可以选择直接开始
-5. 创建一个或修改已有的服务端类
+5. 创建一个或修改已有的服务端类\
     这里是一个创建的示例(您可以参考 [service.py](https://github.com/boringmj/python_tcp_quick/blob/master/service.py) 以便更快理解如何自定义并使用 `tcp_quick` ), 您需要先引入socket模块和服务端模块
     ```
     import socket
@@ -107,8 +108,8 @@ python_tcp_quick 项目目录
     OpenClient('127.0.0.1',9999)
     ```
     示例中实例化时传入了两个参数, 这两个参数同样可以缺省\
-    第一个参数是服务端的IP地址, 默认是 `str 127.0.0.1`, 请注意这里填的不是服务端监听的地址, 而是服务端的地址\
-    第二个参数是
+    第一个参数是服务端的IP地址 `str` , 默认是 `str 127.0.0.1`, 请注意这里填的不是服务端监听的地址, 而是服务端的地址\
+    第二个参数是服务器监听的端口 `int` , 默认是 `int 10901`
     ```
     # 参数
     @param ip: 服务端ip
