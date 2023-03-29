@@ -36,6 +36,7 @@ class Service(ABC):
         self._sock.listen(self._backlog)
         # 开启监听线程
         self._clients=[]
+        self._sock_list={}
         self._is_start=True
         for i in range(self._backlog):
             t=threading.Thread(target=self._listen,args=(i,),daemon=True)
@@ -46,10 +47,12 @@ class Service(ABC):
         """监听线程"""
         while self._is_start:
             print('[LISTEN] 监听线程'+str(id)+'开始监听')
+            if id in self._sock_list:
+                del self._sock_list[id]
             try:
-                sock,addr=self._sock.accept()
-                print('[LISTEN] 监听线程'+str(id)+'接收到客户端连接: '+addr[0]+':'+str(addr[1]))
-                self._handle(sock,addr[0],addr[1])
+                self._sock_list[id]=self._sock.accept()
+                print('[LISTEN] 监听线程'+str(id)+'接收到客户端连接: '+str(self._sock_list[id][1]))
+                self._handle(self._sock_list[id][0],self._sock_list[id][1][0],self._sock_list[id][1][1])
             except Exception as e:
                 print('[LISTEN] 监听线程'+str(id)+'异常: '+str(e))
 
