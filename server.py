@@ -1,9 +1,9 @@
 import socket
-from tcp_quick.service import Service
+from tcp_quick.server import Server
 
 import threading
 
-class OpenService(Service):
+class OpenServer(Server):
     """开放服务端"""
 
     def _handle(self,sock:socket.socket,ip:str,port:int)->None:
@@ -16,14 +16,14 @@ class OpenService(Service):
         # 关闭连接
         sock.close()
 
-service=OpenService('0.0.0.0',9999,1)
+server=OpenServer('0.0.0.0',9999,1)
 
-def end_service():
+def end_server():
     """结束服务端"""
-    global service
+    global server
     user_input=input('')
     if user_input=='exit' or user_input=='quit':
-        service.close()
+        server.close()
 
 # 开启一个多线程,用于结束服务端
-threading.Thread(target=end_service).start()
+threading.Thread(target=end_server).start()

@@ -2,7 +2,7 @@
 import socket,threading,re
 from abc import ABC,abstractmethod
 
-class Service(ABC):
+class Server(ABC):
     """
     快速TCP服务端抽象类
     请注意需要实现 `_handle(self,sock:socket.socket,ip:str,port:int)->None` 方法
